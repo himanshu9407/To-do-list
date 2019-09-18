@@ -1,0 +1,67 @@
+<div class="row" >
+  <div class="col s7">
+    <table class="responsive-table highlight">
+    <thead>
+      <tr>
+       
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th >Action</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let emp of data">
+      
+      <td>{{emp.name}}</td>
+      <td>{{emp.position}}</td>
+      <td>{{emp.office}}</td>
+      <td >
+        <a class="action-btn"  (click)="showhidedata(emp)">
+          <i class="material-icons">edit</i>
+        </a>
+        <a class="action-btn"  (click)="onDelete(emp._id, employeeForm)">
+          <i class="material-icons">delete</i>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+<div *ngIf="showdata" class="modify">
+    <form #employeeForm="ngForm" (ngSubmit)="updateEmployee(employeeForm)">
+    <input type="hidden" name="id" #id="ngModel" placeholder="{{user._id}}" [(ngModel)] = "user._id"/>
+    <div class="row">
+      <div class="input-field col s5">
+        <input type="text" name="name" #name="ngModel" placeholder="{{user.name}}"  [(ngModel)]="user.name" required/>
+        <label for="exampleInputEmail1">Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <input type="text" name="position" #position="ngModel" placeholder="{{user.position}}" [(ngModel)]="user.position" placeholder="Update Your Position"/>
+        <label for="exampleInputEmail1">Position : </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <input type="text" name="office" #office="ngModel" placeholder="{{user.office}}" [(ngModel)]="user.office" placeholder="Update Office Location" />
+        <label for="exampleInputEmail1">Office : </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s5">
+        <input type="text" name="salary" #salary="ngModel"placeholder="{{user.salary}}" [(ngModel)]="user.salary" placeholder="Update Your Salary"/>
+        <label for="exampleInputEmail1">Salary :</label>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Update</button>
+    
+  </form>
+</div>
+<div></div>
+
+
+
+
+
+
